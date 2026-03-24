@@ -5,6 +5,7 @@ import { Toaster } from "sonner";
 import Header from "@/components/header";
 import { dark } from "@clerk/themes";
 import { ThemeProvider } from "@/components/theme-provider";
+import { LingoProvider } from "@lingo.dev/compiler/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
         baseTheme: dark,
       }}
     >
+      <LingoProvider>
       <html lang="en" suppressHydrationWarning>
         <head>
           <link rel="icon" href="/logo.png" sizes="any" />
@@ -30,19 +32,20 @@ export default function RootLayout({ children }) {
             defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
-          >
+            >
             <Header />
             <main className="min-h-screen">{children}</main>
             <Toaster richColors />
 
             <footer className="bg-muted/50 py-12">
               <div className="container mx-auto px-4 text-center text-gray-200">
-                <p>Made with 💗 by RoadsideCoder</p>
+                <p>Made with 💗 by Pluse tech</p>
               </div>
             </footer>
           </ThemeProvider>
         </body>
       </html>
+    </LingoProvider>
     </ClerkProvider>
   );
 }
